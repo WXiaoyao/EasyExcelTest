@@ -86,7 +86,7 @@ public class App
                         return contentWriteCellStyle;
                     }
                 }).registerWriteHandler(new HorizontalCellStyleStrategy(headWriteCellStyle,
-                contentWriteCellStyle)).registerWriteHandler(new MyRowWriteHandler()).build()) {
+                contentWriteCellStyle)).inMemory(true).registerWriteHandler(new MyRowWriteHandler()).build()) {
             WriteSheet writeSheet = EasyExcel.writerSheet("合并表").build();
             scanAndWrite(excelWriter, writeSheet);
         }
