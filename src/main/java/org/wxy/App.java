@@ -22,16 +22,13 @@ import org.wxy.model.RoleAndPrivilege;
 import org.wxy.model.User;
 import org.wxy.writehandler.MyRowWriteHandler;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class App 
 {
     private Map<String, Map<String, Set<String>>> userMap;
     private Map<String, Set<String>> roleNameAccountMap;
-    String path = this.getClass().getClassLoader().getResource("").getPath();
+    String path = this.getClass().getClassLoader().getResource("").getPath() + "real/";
 
     public static void main( String[] args )
     {
@@ -45,7 +42,7 @@ public class App
     }
 
     private void processPersonAndRoleExcel() {
-        String fileName = path + "PersonAndRole.xlsx";
+        String fileName = path + "PersonAndRole.xls";
         System.out.println(fileName);
         try (ExcelReader excelReader = EasyExcel.read(fileName, PersonAndRole.class, new PersonAndRoleListener()).build()) {
             ReadSheet readSheet = EasyExcel.readSheet(0).build();
@@ -54,7 +51,7 @@ public class App
     }
 
     private void processRoleAndPrivilegeExcel() {
-        String fileName = path + "RoleAndPrivilege.xlsx";
+        String fileName = path + "RoleAndPrivilege.xls";
         System.out.println(fileName);
         try (ExcelReader excelReader = EasyExcel.read(fileName, RoleAndPrivilege.class, new RoleAndPrivilegeListener()).build()) {
             ReadSheet readSheet = EasyExcel.readSheet(0).build();

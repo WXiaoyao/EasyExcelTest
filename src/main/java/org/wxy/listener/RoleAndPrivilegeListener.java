@@ -32,6 +32,9 @@ public class RoleAndPrivilegeListener implements ReadListener<RoleAndPrivilege> 
         resourcePath4 = resourcePaths.length > 4 ? resourcePaths[4] : "";
         roleName = roleAndPrivilege.getRoleName();
         resourceName = roleAndPrivilege.getResource();
+        if (!roleNameAccountMap.containsKey(roleName)) {
+            return;
+        }
         for (String account : roleNameAccountMap.get(roleName)) {
             Map<String, Set<String>> resourceMap = userMap.get(account);
             if (!resourcePath1.equals("")) {
